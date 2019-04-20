@@ -1,7 +1,8 @@
-package com.mkpazon.weekdaycalculator
+package com.mkpazon.businessdayscalculator.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.mkpazon.businessdayscalculator.R
 
 class MainActivity : AppCompatActivity() {
 

@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">Weekday Calculator</string>
+    <string name="app_name">Business Days Calculator</string>
+    <string name="start_date">Start Date</string>
+    <string name="end_date">End Date</string>
+    <string name="business_days">Business Days</string>
 </resources>

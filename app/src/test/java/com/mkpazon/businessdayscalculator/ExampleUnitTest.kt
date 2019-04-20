@@ -1,4 +1,4 @@
-package com.mkpazon.weekdaycalculator
+package com.mkpazon.businessdayscalculator
 
 import org.junit.Test
 
