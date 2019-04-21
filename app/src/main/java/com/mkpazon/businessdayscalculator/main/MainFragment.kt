@@ -17,6 +17,7 @@ import com.mkpazon.businessdayscalculator.ui.BaseFragment
 import io.reactivex.rxkotlin.plusAssign
 import kotlinx.android.synthetic.main.fragment_main.*
 import com.mkpazon.businessdayscalculator.data.model.Resource.Status.*
+import com.mkpazon.businessdayscalculator.util.toCalendar
 import io.reactivex.Observable
 import io.reactivex.functions.BiFunction
 import org.kodein.di.generic.instance
@@ -45,7 +46,13 @@ class MainFragment : BaseFragment() {
                 et_start_date.setText(simpleDateFormat.format(calendar.time))
             }
             activity?.let {
-                val cal = Calendar.getInstance()
+                val currentValue = et_start_date.text.toString()
+                val cal = if (currentValue.isEmpty()) {
+                    Calendar.getInstance()
+                } else {
+                    val date = simpleDateFormat.parse(currentValue)
+                    date.toCalendar()
+                }
                 DatePickerDialog(it, listener, cal.get(YEAR), cal.get(MONTH), cal.get(DATE)).show()
             }
         }
@@ -56,7 +63,13 @@ class MainFragment : BaseFragment() {
                 et_end_date.setText(simpleDateFormat.format(calendar.time))
             }
             activity?.let {
-                val cal = Calendar.getInstance()
+                val currentValue = et_end_date.text.toString()
+                val cal = if (currentValue.isEmpty()) {
+                    Calendar.getInstance()
+                } else {
+                    val date = simpleDateFormat.parse(currentValue)
+                    date.toCalendar()
+                }
                 DatePickerDialog(it, listener, cal.get(YEAR), cal.get(MONTH), cal.get(DATE)).show()
             }
         }
