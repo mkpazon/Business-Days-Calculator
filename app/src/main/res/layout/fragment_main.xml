@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+                name="businessDays"
+                type="int"/>
+
+        <variable
+                name="isLoading"
+                type="boolean"/>
+    </data>
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_start_date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_start_date"
+                        android:clickable="true"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:layout_width="match_parent"
+                        android:inputType="date"
+                        android:hint="@string/start_date"
+                        android:layout_height="wrap_content"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_end_date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/til_start_date"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_end_date"
+                        android:layout_width="match_parent"
+                        android:inputType="date"
+                        android:clickable="true"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:hint="@string/end_date"
+                        android:layout_height="wrap_content"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                    android:id="@+id/tv_num_business_days"
+                    android:layout_width="wrap_content"
+                    android:textAlignment="center"
+                    android:layout_height="wrap_content"
+                    tools:text="120"
+                    android:text='@{businessDays > 0 ? String.valueOf(businessDays) : ""}'
+                    app:layout_constraintTop_toBottomOf="@+id/til_end_date"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="8dp"
+                    android:textSize="80sp"
+                    android:layout_marginTop="16dp"/>
+
+            <TextView
+                    android:id="@+id/tv_business_days_label"
+                    android:layout_width="wrap_content"
+                    android:textAlignment="center"
+                    android:visibility="@{businessDays > 0}"
+                    android:layout_height="wrap_content"
+                    android:text="@string/business_days"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_num_business_days"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"/>
+
+            <ProgressBar
+                    android:id="@+id/pb_indicator"
+                    android:layout_width="wrap_content"
+                    android:visibility="@{isLoading}"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@+id/tv_num_business_days"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_num_business_days"
+                    app:layout_constraintTop_toTopOf="@+id/tv_num_business_days"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_num_business_days"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</layout>
